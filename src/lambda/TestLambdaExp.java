@@ -11,11 +11,15 @@ public class TestLambdaExp {
         ArrayList<String> list = new ArrayList<String>();
         Collections.addAll(list, "Hello", "how", "are", "you?");
 
-        Comparator<String> comparator = new Comparator<String>() {
+        /*Comparator<String> comparator = new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
                 return o1.length() - o2.length();
             }
+        };*/
+
+        Comparator<String> comparator = (String o1, String o2) -> {
+            return o1.length() - o2.length();
         };
 
         Collections.sort(list, comparator);
