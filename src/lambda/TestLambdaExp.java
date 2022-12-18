@@ -22,7 +22,9 @@ public class TestLambdaExp {
             return o1.length() - o2.length();
         };*/
 
-        Comparator<String> comparator = (o1, o2) -> o1.length() - o2.length();
+        //Comparator<String> comparator = (o1, o2) -> o1.length() - o2.length();
+
+        Comparator<String> comparator = Comparator.comparingInt(String::length);
 
         Collections.sort(list, comparator);
         list.forEach(System.out::println);
