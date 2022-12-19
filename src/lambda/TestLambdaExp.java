@@ -24,10 +24,14 @@ public class TestLambdaExp {
 
         //Comparator<String> comparator = (o1, o2) -> o1.length() - o2.length();
 
-        Comparator<String> comparator = Comparator.comparingInt(String::length);
+        /*Comparator<String> comparator = Comparator.comparingInt(String::length);
+        Collections.sort(list, comparator);*/
 
-        Collections.sort(list, comparator);
-        list.forEach(System.out::println);
+        list.stream()
+                .sorted((o1, o2) -> o1.length() - o2.length()) // or .sorted(Comparator.comparingInt(String::length))
+                .forEach(System.out::println);
+
+        //list.forEach(System.out::println);
     }
 
     /*static class StringLengthComparator implements Comparator<String>{
