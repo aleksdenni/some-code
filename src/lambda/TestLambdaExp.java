@@ -2,6 +2,10 @@ package lambda;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+;
 
 public class TestLambdaExp {
     //static Comparator<String> comparator = new StringLengthComparator();
@@ -9,6 +13,22 @@ public class TestLambdaExp {
     public static void main(String[] args) {
         ArrayList<String> list = new ArrayList<String>();
         Collections.addAll(list, "Hello", "how", "are", "you?");
+
+        String[] arr = {"2", "3", "4", "6", "3", "2", "11", "8", "9"};
+
+        List<String> arrList = new ArrayList<>(List.of(arr));
+        arrList.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return o1.length() - o2.length();
+            }
+        });
+
+        Comparator<String> parserDesc = (o1 , o2) -> Integer.parseInt(o2) - Integer.parseInt(o1);
+        Comparator<String> parserAsc = (o1 , o2) -> Integer.parseInt(o1) - Integer.parseInt(o2);
+
+        arrList.sort(parserDesc);
+        System.out.println(arrList);
 
         Integer a = 5;
         String str = "hello World";
