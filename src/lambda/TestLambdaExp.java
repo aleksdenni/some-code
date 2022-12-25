@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class TestLambdaExp {
-   //static Comparator<String> comparator = new StringLengthComparator();
+    //static Comparator<String> comparator = new StringLengthComparator();
 
     public static void main(String[] args) {
         ArrayList<String> list = new ArrayList<String>();
@@ -12,7 +12,7 @@ public class TestLambdaExp {
 
         Integer a = 5;
         String str = "hello World";
-        str.chars().forEach((int x) -> System.out.print((char)(x*a>>1)));
+        str.chars().forEach((int x) -> System.out.print((char) (x * a >> 1)));
 
         System.out.println();
         Runnable run1 = () -> new TestLambdaExp().check();
@@ -20,6 +20,14 @@ public class TestLambdaExp {
         new Thread(run1).start();
         new Thread(run2).start();
 
+        Settable<Animal> st = (obj, name, age) -> {
+            obj.setName(name);
+            obj.setAge(age);
+        };
+
+        Cat cat1 = new TestLambdaExp().new Cat();
+        st.set(cat1, "chorniy", 15);
+        System.out.println(cat1.getName() + " : " + cat1.getAge());
 
         /*Comparator<String> comparator = new Comparator<String>() {
             @Override
@@ -44,7 +52,7 @@ public class TestLambdaExp {
                 .forEach(System.out::println);
     }
 
-    public void check(){
+    public void check() {
         System.out.println("hello1");
     }
 
@@ -53,4 +61,33 @@ public class TestLambdaExp {
             return obj1.length() - obj2.length();
         }
     }*/
+
+    interface Settable<T> {
+        void set(T obj, String name, int age);
+    }
+
+    class Animal {
+        private int age;
+        private String name;
+
+        public int getAge() {
+            return age;
+        }
+
+        public void setAge(int age) {
+            this.age = age;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
+
+    class Cat extends Animal {
+
+    }
 }
