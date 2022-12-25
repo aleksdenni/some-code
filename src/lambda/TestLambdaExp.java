@@ -14,8 +14,10 @@ public class TestLambdaExp {
         ArrayList<String> list = new ArrayList<String>();
         Collections.addAll(list, "Hello", "how", "are", "you?");
 
+/**
+ *
+ */
         String[] arr = {"2", "3", "4", "6", "3", "2", "11", "8", "9"};
-
         List<String> arrList = new ArrayList<>(List.of(arr));
         arrList.sort(new Comparator<String>() {
             @Override
@@ -29,7 +31,25 @@ public class TestLambdaExp {
 
         arrList.sort(parserDesc);
         System.out.println(arrList);
-
+/**
+ *
+ */
+        Confirmable check = new Confirmable() {
+            @Override
+            public boolean isConfirmed(int num) {
+                return num%2==0;
+            }
+        };
+        //arrList.stream().filter(x -> check.isConfirmed(Integer.parseInt(x))).forEach(System.out::print);
+        arrList.forEach((x) -> {
+            if (check.isConfirmed(Integer.parseInt(x))){
+                System.out.println(x);
+            }
+        });
+        System.out.println();
+/**
+ *
+ */
         Integer a = 5;
         String str = "hello World";
         str.chars().forEach((int x) -> System.out.print((char) (x * a >> 1)));
@@ -81,6 +101,10 @@ public class TestLambdaExp {
             return obj1.length() - obj2.length();
         }
     }*/
+
+    interface Confirmable {
+        boolean isConfirmed(int num);
+    }
 
     interface Settable<T> {
         void set(T obj, String name, int age);
