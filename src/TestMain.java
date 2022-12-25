@@ -39,7 +39,7 @@ public class TestMain {
 
 class Box<I>{
         private I r;
-        private int size = 1;
+        private final int size = 1;
 
     void set(I o){
         r = o;

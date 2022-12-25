@@ -2,7 +2,6 @@ package lambda;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 public class TestLambdaExp {
    //static Comparator<String> comparator = new StringLengthComparator();
@@ -10,6 +9,17 @@ public class TestLambdaExp {
     public static void main(String[] args) {
         ArrayList<String> list = new ArrayList<String>();
         Collections.addAll(list, "Hello", "how", "are", "you?");
+
+        Integer a = 5;
+        String str = "hello World";
+        str.chars().forEach((int x) -> System.out.print((char)(x*a>>1)));
+
+        System.out.println();
+        Runnable run1 = () -> new TestLambdaExp().check();
+        Runnable run2 = () -> System.out.println("hello2");
+        new Thread(run1).start();
+        new Thread(run2).start();
+
 
         /*Comparator<String> comparator = new Comparator<String>() {
             @Override
@@ -32,6 +42,10 @@ public class TestLambdaExp {
                 .sorted((o1, o2) -> o1.length() - o2.length()) // or .sorted(Comparator.comparingInt(String::length))
                 //.sorted((o1, o2) -> o2.length() - o1.length()) // reverse sort
                 .forEach(System.out::println);
+    }
+
+    public void check(){
+        System.out.println("hello1");
     }
 
     /*static class StringLengthComparator implements Comparator<String>{
