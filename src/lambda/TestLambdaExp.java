@@ -26,24 +26,20 @@ public class TestLambdaExp {
             }
         });
 
-        Comparator<String> parserDesc = (o1 , o2) -> Integer.parseInt(o2) - Integer.parseInt(o1);
-        Comparator<String> parserAsc = (o1 , o2) -> Integer.parseInt(o1) - Integer.parseInt(o2);
+        Comparator<String> parserDesc = (o1, o2) -> Integer.parseInt(o2) - Integer.parseInt(o1);
+        Comparator<String> parserAsc = (o1, o2) -> Integer.parseInt(o1) - Integer.parseInt(o2);
 
         arrList.sort(parserDesc);
         System.out.println(arrList);
 /**
  *
  */
-        Confirmable check = new Confirmable() {
-            @Override
-            public boolean isConfirmed(int num) {
-                return num%2==0;
-            }
-        };
+        Confirmable check = num -> num % 2 == 0;
         //arrList.stream().filter(x -> check.isConfirmed(Integer.parseInt(x))).forEach(System.out::print);
+        System.out.print("even numbers ");
         arrList.forEach((x) -> {
-            if (check.isConfirmed(Integer.parseInt(x))){
-                System.out.println(x);
+            if (check.isConfirmed(Integer.parseInt(x))) {
+                System.out.print(x);
             }
         });
         System.out.println();
