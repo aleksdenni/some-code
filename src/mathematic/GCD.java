@@ -1,4 +1,5 @@
 package mathematic;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
@@ -9,9 +10,8 @@ import java.math.BigInteger;
 
 public class GCD {
     public static void main(String[] args) throws Exception {
-        try (
-                BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        try {
             String numF = reader.readLine();
             long numFirst = Long.parseLong(numF);
             String numS = reader.readLine();
@@ -19,12 +19,13 @@ public class GCD {
 
             if (numFirst <= 0 || numSecond <= 0) {
                 throw new NumberFormatException();
-            } else
+            } /*else  //first method
                 while (numFirst != numSecond) {
                     if (numFirst > numSecond) {
                         numFirst = numFirst - numSecond;
                     } else numSecond = numSecond - numFirst;
                 }
+                */
 
             System.out.println(BigInteger.valueOf(Long.parseLong(numF))
                     .gcd(BigInteger.valueOf(Long.parseLong(numS))));
