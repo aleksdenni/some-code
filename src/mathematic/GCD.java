@@ -19,13 +19,12 @@ public class GCD {
 
             if (numFirst <= 0 || numSecond <= 0) {
                 throw new NumberFormatException();
-            } /*else  //first method
-                while (numFirst != numSecond) {
-                    if (numFirst > numSecond) {
-                        numFirst = numFirst - numSecond;
-                    } else numSecond = numSecond - numFirst;
-                }
-                */
+            }  //first method
+            /* while (numFirst != numSecond) {
+                if (numFirst > numSecond) {
+                    numFirst = numFirst - numSecond;
+                } else numSecond = numSecond - numFirst;
+            }*/
 
             System.out.println(BigInteger.valueOf(Long.parseLong(numF))
                     .gcd(BigInteger.valueOf(Long.parseLong(numS))));
