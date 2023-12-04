@@ -21,7 +21,7 @@ public class ChangeStream {
         for (int i = 0; i < byteArray.length; i++) {
             System.out.println(byteArray[i]);
             if (i % 2 != 0)
-                System.out.println("JavaRush - курсы Java онлайн");
+                System.out.println("Текст для вставки");
         }
     }
 
